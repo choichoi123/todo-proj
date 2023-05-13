@@ -1,6 +1,7 @@
-import TodoCollection from "./TodoCollection";
-import TodoItem from "./TodoItem";
+import TodoCollection from "./service/TodoCollection";
+import TodoItem from "./model/TodoItem";
 import { data } from "./data";
+import TodoConsole from "./view/TodoConsole";
 
 console.log("My Todo List");
 for (let i in data) {
@@ -19,4 +20,15 @@ myTodoCollection.addTodo("코딩해보기");
 myTodoCollection.markComplete(3, true);
 
 console.log(`${myTodoCollection.userName}`);
-myTodoCollection.todoItems.forEach((item) => item.printDetails());
+// myTodoCollection.todoItems.forEach((item) => item.printDetails());
+
+myTodoCollection.getTodoItems(true).forEach((item) => item.printDetails())
+console.log("========================")
+myTodoCollection.getTodoItems(false).forEach((item) => item.printDetails())
+console.log("------------------------")
+myTodoCollection.removeComplete()
+myTodoCollection.getTodoItems(true).forEach((item) => item.printDetails())
+
+
+const todoConsole = new TodoConsole();
+todoConsole.prompUser();
